@@ -28,10 +28,10 @@ namespace ClassLibraryForHomeTask5
 
         public object Peek()
         {
-            if (list.count == 0)
+            if (list.Count == 0)
                 throw new InvalidOperationException("Stack is empty");
 
-            return list[list.count - 1];
+            return list[list.Count - 1];
         }
 
         public object[] ToArray()
@@ -46,17 +46,17 @@ namespace ClassLibraryForHomeTask5
 
         public object Pop()
         {
-            if (list.count == 0)
+            if (list.Count == 0)
                 throw new InvalidOperationException("Stack is empty");
 
-            object item = list[list.count - 1];
-            list.RemoveAt(list.count - 1);
+            object item = list[list.Count - 1];
+            list.RemoveAt(list.Count - 1);
             return item;
         }
 
         public int Count
         {
-            get { return list.count; }
+            get { return list.Count; }
         }
     }
 }

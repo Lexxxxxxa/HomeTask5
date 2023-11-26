@@ -23,7 +23,7 @@ namespace ClassLibraryForHomeTask5
 
         public object Dequeue()
         {
-            if (list.count == 0)
+            if (list.Count == 0)
                 throw new InvalidOperationException("Queue is empty");
 
             object item = list[0];
@@ -43,7 +43,7 @@ namespace ClassLibraryForHomeTask5
 
         public object Peek()
         {
-            if (list.count == 0)
+            if (list.Count == 0)
                 throw new InvalidOperationException("Queue is empty");
 
             return list[0];
@@ -56,7 +56,7 @@ namespace ClassLibraryForHomeTask5
 
         public int Count
         {
-            get { return list.count; }
+            get { return list.Count; }
         }
     }
 }

@@ -53,7 +53,7 @@ namespace TestProject
             list.Add(2);
 
             list.Clear();
-            Console.WriteLine(list.count);
+            Console.WriteLine(list.Count);
         }
 
         public static void TestListContains()

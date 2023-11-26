@@ -10,7 +10,7 @@ namespace ClassLibraryForHomeTask5
     {
         private class Node
         {
-            public object Value;
+            public readonly object Value;
             public Node Next;
             public Node Previous;
 

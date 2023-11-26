@@ -6,7 +6,7 @@ namespace ClassLibraryForHomeTask5
     {
         private class Node
         {
-            public int Value;
+            public readonly int Value;
             public Node Left;
             public Node Right;
 
@@ -40,11 +40,18 @@ namespace ClassLibraryForHomeTask5
                 return new Node(value);
             }
 
+            if (value == node.Value)
+            {
+                // Decide how to handle duplicate values.
+                // Here, we are rejecting duplicates.
+                return node;
+            }
+
             if (value < node.Value)
             {
                 node.Left = AddRecursive(node.Left, value);
             }
-            else if (value > node.Value)
+            else
             {
                 node.Right = AddRecursive(node.Right, value);
             }

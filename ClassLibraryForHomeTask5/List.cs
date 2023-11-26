@@ -4,140 +4,157 @@ namespace ClassLibraryForHomeTask5
 {
     public class List
     {
-        internal object[] items;
-        public int count { get; internal set; }
-        internal int capacity { get; set; }
+        private object[] items;
+        private const int DefaultCapacity = 4;
+
+        public int Count { get; private set; }
+        public int Capacity { get; private set; }
 
         public List()
         {
-            capacity = 4;
-            items = new object[capacity];
-            count = 0;
+            Capacity = DefaultCapacity;
+            items = new object[Capacity];
+            Count = 0;
         }
 
         public List(int capacity)
         {
-            this.capacity = capacity;
-            items = new object[capacity];
-            count = 0;
+            Capacity = capacity > 0 ? capacity : DefaultCapacity;
+            items = new object[Capacity];
+            Count = 0;
         }
+
 
         public object this[int index]
         {
             get
             {
-                if (index < 0 || index >= count)
+                if (index < 0 || index >= Count)
                     throw new IndexOutOfRangeException();
+
                 return items[index];
             }
             set
             {
-                if (index < 0 || index >= count)
+                if (index < 0 || index >= Count)
                     throw new IndexOutOfRangeException();
+
                 items[index] = value;
             }
         }
 
         public void Add(object item)
         {
-            items[count] = item;
-            count++;
-        }//5.1 Add(object)
+            if (Count == Capacity)
+            {
+                EnsureCapacity();
+            }
+
+            items[Count] = item;
+            Count++;
+        }
 
         public void Insert(int index, object item)
         {
-            if (index < 0 || index > count)
-                throw new IndexOutOfRangeException();
+            if (index < 0 || index > Count)
+                throw new IndexOutOfRangeException("Index is out of range.");
 
-            for (int i = count; i > index; i--)
+            if (Count == Capacity)
+            {
+                EnsureCapacity();
+            }
+
+            for (int i = Count; i > index; i--)
             {
                 items[i] = items[i - 1];
             }
 
             items[index] = item;
-            count++;
-        }//5.2 Insert(int, object)
+            Count++;
+        }
 
         public void Remove(object item)
         {
-            int index = -1;
-
-            for (int i = 0; i < count; i++)
-            {
-                if (object.Equals(item, items[i]))
-                {
-                    index = i;
-                    break;
-                }
-            }
+            int index = IndexOf(item);
 
             if (index != -1)
             {
-                for (int i = index; i < count - 1; i++)
+                for (int i = index; i < Count - 1; i++)
                 {
                     items[i] = items[i + 1];
                 }
 
-                count--;
+                Count--;
             }
-        }//5.3 Remove(object)
+        }
 
         public void RemoveAt(int index)
         {
-            if (index < 0 || index >= count)
-                throw new IndexOutOfRangeException();
+            if (index < 0 || index >= Count)
+                throw new IndexOutOfRangeException("Index is out of range.");
 
-            for (int i = index; i < count - 1; i++)
+            for (int i = index; i < Count - 1; i++)
             {
                 items[i] = items[i + 1];
             }
 
-            count--;
-        }// 5.4 RemoveAt(int)
+            Count--;
+        }
 
         public void Clear()
         {
-            count = 0;
-        }//5.5 Clear()
+            Count = 0;
+        }
 
         public bool Contains(object item)
         {
-            foreach (Object obj in items)
+            for (int i = 0; i < Count; i++)
             {
-                if (object.Equals(item, obj))
+                if (object.Equals(item, items[i]))
                     return true;
             }
             return false;
-        } //5.6 bool Contains(object)
+        }
 
         public int IndexOf(object item)
         {
-            for (int i = 0; i < count; i++)
+            for (int i = 0; i < Count; i++)
             {
                 if (object.Equals(item, items[i]))
                     return i;
             }
             return -1;
-        } // 5.7 int IndexOf(object)
+        }
 
         public object[] ToArray()
         {
-            object[] listToArray = new object[count];
-            for (int i = 0; i < count; i++)
+            object[] listToArray = new object[Count];
+            for (int i = 0; i < Count; i++)
             {
                 listToArray[i] = items[i];
             }
             return listToArray;
-        }// 5.8 object[] ToArray()
+        }
 
         public void Reverse()
         {
-            for (int i = 0, j = count-1; i < j; i++, j--)
+            for (int i = 0, j = Count - 1; i < j; i++, j--)
             {
                 object temp = items[i];
                 items[i] = items[j];
                 items[j] = temp;
             }
-        } //5.9 Reverse()
+        }
+
+        private void EnsureCapacity()
+        {
+            Capacity *= 2;
+            object[] newItems = new object[Capacity];
+            for (int i = 0; i < Count; i++)
+            {
+                newItems[i] = items[i];
+            }
+            items = newItems;
+        }
     }
 }

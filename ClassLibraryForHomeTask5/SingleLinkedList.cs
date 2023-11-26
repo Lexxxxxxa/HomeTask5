@@ -1,12 +1,10 @@
-﻿
-
-namespace ClassLibraryForHomeTask5
+﻿namespace ClassLibraryForHomeTask5
 {
     public class SinglyLinkedList
     {
         private class Node
         {
-            public object Value;
+            public readonly object Value;
             public Node Next;
 
             public Node(object value)
@@ -29,20 +27,7 @@ namespace ClassLibraryForHomeTask5
 
         public void Add(object item)
         {
-            Node newNode = new Node(item);
-
-            if (First == null)
-            {
-                First = newNode;
-                Last = newNode;
-            }
-            else
-            {
-                Last.Next = newNode;
-                Last = newNode;
-            }
-
-            Count++;
+            AddLast(item);
         }
 
         public void AddFirst(object item)
@@ -63,6 +48,24 @@ namespace ClassLibraryForHomeTask5
             Count++;
         }
 
+        public void AddLast(object item)
+        {
+            Node newNode = new Node(item);
+
+            if (First == null)
+            {
+                First = newNode;
+                Last = newNode;
+            }
+            else
+            {
+                Last.Next = newNode;
+                Last = newNode;
+            }
+
+            Count++;
+        }
+
         public void Insert(int index, object item)
         {
             if (index < 0 || index > Count)
@@ -74,7 +77,7 @@ namespace ClassLibraryForHomeTask5
             }
             else if (index == Count)
             {
-                Add(item);
+                AddLast(item);
             }
             else
             {
