@@ -1,8 +1,8 @@
-﻿
+﻿using ClassLibraryForHomeTask5.Interfaces.CollectionInterfaces;
 
 namespace ClassLibraryForHomeTask5
 {
-    public class Stack
+    public class Stack : IStack
     {
         private List list;
 

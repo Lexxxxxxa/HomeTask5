@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ClassLibraryForHomeTask5.Interfaces.CollectionInterfaces;
 
 namespace ClassLibraryForHomeTask5
 {
-    public class DoublyLinkedList
+    public class DoublyLinkedList : IDoubleLinkedList
     {
         private class Node
         {
