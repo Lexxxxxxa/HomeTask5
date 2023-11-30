@@ -1,4 +1,4 @@
-﻿namespace Interfaces
+﻿namespace ClassLibraryForHomeTask5.Interfaces
 {
     public interface ITree : ICollection
     {

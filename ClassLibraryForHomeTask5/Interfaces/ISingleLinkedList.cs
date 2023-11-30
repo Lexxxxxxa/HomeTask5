@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Interfaces
+namespace ClassLibraryForHomeTask5.Interfaces
 {
     public interface ISingleLinkedList : ICollection
     {

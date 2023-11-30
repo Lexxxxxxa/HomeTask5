@@ -1,4 +1,4 @@
-﻿using Interfaces;
+﻿using ClassLibraryForHomeTask5.Interfaces;
 
 namespace ClassLibraryForHomeTask5
 {
