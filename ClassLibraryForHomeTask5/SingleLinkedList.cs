@@ -1,6 +1,8 @@
-﻿namespace ClassLibraryForHomeTask5
+﻿using ClassLibraryForHomeTask5.Interfaces;
+
+namespace ClassLibraryForHomeTask5
 {
-    public class SinglyLinkedList
+    public class SinglyLinkedList : ISingleLinkedList
     {
         private class Node
         {

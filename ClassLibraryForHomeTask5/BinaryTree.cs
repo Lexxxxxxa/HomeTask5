@@ -1,8 +1,8 @@
-﻿
+﻿using ClassLibraryForHomeTask5.Interfaces;
 
 namespace ClassLibraryForHomeTask5
 {
-    public class BinaryTree
+    public class BinaryTree : ITree
     {
         private class Node
         {

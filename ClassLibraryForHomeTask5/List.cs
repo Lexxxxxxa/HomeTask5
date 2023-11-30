@@ -1,8 +1,8 @@
-﻿
+﻿using ClassLibraryForHomeTask5.Interfaces;
 
 namespace ClassLibraryForHomeTask5
 {
-    public class List
+    public class List : IList
     {
         private object[] items;
         private const int DefaultCapacity = 4;

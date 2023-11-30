@@ -1,8 +1,8 @@
-﻿
+﻿using ClassLibraryForHomeTask5.Interfaces;
 
 namespace ClassLibraryForHomeTask5
 {
-    public class Queue
+    public class Queue : IQueue
     {
         private List list;
 
