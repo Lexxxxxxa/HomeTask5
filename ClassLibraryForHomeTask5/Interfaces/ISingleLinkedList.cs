@@ -2,9 +2,9 @@
 
 namespace ClassLibraryForHomeTask5.Interfaces
 {
-    public interface ISingleLinkedList : ICollection
+    public interface ISingleLinkedList<T> : ICollection<T> where T : IComparable<T>
     {
-        void AddFirst(object item);
-        void Insert(int index, object item);
+        void AddFirst(T item);
+        void Insert(int index, T item);
     }
 }

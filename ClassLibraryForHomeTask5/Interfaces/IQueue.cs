@@ -2,13 +2,10 @@
 
 namespace ClassLibraryForHomeTask5.Interfaces
 {
-    public interface IQueue : ICollection
+    public interface IQueue<T> : ICollection<T> where T : IComparable<T>
     {
-        void Enqueue(object item);
-        object Dequeue();
-        void Clear();
-        bool Contains(object item);
-        object Peek();
-        object[] ToArray();
+        void Enqueue(T item);
+        T Dequeue();
+        T Peek();
     }
 }

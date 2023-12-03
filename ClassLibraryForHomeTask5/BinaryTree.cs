@@ -2,15 +2,15 @@
 
 namespace ClassLibraryForHomeTask5
 {
-    public class BinaryTree : ITree
+    public class BinaryTree<T> : ITree<T> where T : IComparable<T>
     {
         private class Node
         {
-            public readonly int Value;
+            public readonly T Value;
             public Node Left;
             public Node Right;
 
-            public Node(int value)
+            public Node(T value)
             {
                 Value = value;
                 Left = null;
@@ -27,27 +27,27 @@ namespace ClassLibraryForHomeTask5
             Count = 0;
         }
 
-        public void Add(int value)
+        public void Add(T value)
         {
             Root = AddRecursive(Root, value);
             Count++;
         }
 
-        private Node AddRecursive(Node node, int value)
+        private Node AddRecursive(Node node, T value)
         {
             if (node == null)
             {
                 return new Node(value);
             }
 
-            if (value == node.Value)
+            int comparisonResult = value.CompareTo(node.Value);
+
+            if (comparisonResult == 0)
             {
-                // Decide how to handle duplicate values.
-                // Here, we are rejecting duplicates.
                 return node;
             }
 
-            if (value < node.Value)
+            if (comparisonResult < 0)
             {
                 node.Left = AddRecursive(node.Left, value);
             }
@@ -59,24 +59,26 @@ namespace ClassLibraryForHomeTask5
             return node;
         }
 
-        public bool Contains(int value)
+        public bool Contains(T value)
         {
             return ContainsRecursive(Root, value);
         }
 
-        private bool ContainsRecursive(Node node, int value)
+        private bool ContainsRecursive(Node node, T value)
         {
             if (node == null)
             {
                 return false;
             }
 
-            if (value == node.Value)
+            int comparisonResult = value.CompareTo(node.Value);
+
+            if (comparisonResult == 0)
             {
                 return true;
             }
 
-            if (value < node.Value)
+            if (comparisonResult < 0)
             {
                 return ContainsRecursive(node.Left, value);
             }
@@ -92,14 +94,14 @@ namespace ClassLibraryForHomeTask5
             Count = 0;
         }
 
-        public int[] ToArray()
+        public T[] ToArray()
         {
-            int[] result = new int[Count];
+            T[] result = new T[Count];
             ToArrayRecursive(Root, result, 0);
             return result;
         }
 
-        private int ToArrayRecursive(Node node, int[] array, int index)
+        private int ToArrayRecursive(Node node, T[] array, int index)
         {
             if (node != null)
             {

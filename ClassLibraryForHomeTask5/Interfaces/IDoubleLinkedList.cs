@@ -2,10 +2,10 @@
 
 namespace ClassLibraryForHomeTask5.Interfaces
 {
-    public interface IDoubleLinkedList : ICollection
+    public interface IDoubleLinkedList<T> : ICollection<T> where T : IComparable<T>
     {
-        void AddFirst(object item);
-        void Remove(object item);
+        void AddFirst(T item);
+        void Remove(T item);
         void RemoveFirst();
         void RemoveLast();
     }

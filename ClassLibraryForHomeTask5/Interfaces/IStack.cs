@@ -2,14 +2,10 @@
 
 namespace ClassLibraryForHomeTask5.Interfaces
 {
-    public interface IStack : ICollection
+    public interface IStack<T> : ICollection<T> where T : IComparable<T>
     {
-        void Clear();
-        bool Contains(object item);
-        object Peek();
-        object[] ToArray();
-        void Push(object item);
-        object Pop();
+        void Push(T item);
+        T Pop();
         int Count { get; }
     }
 }

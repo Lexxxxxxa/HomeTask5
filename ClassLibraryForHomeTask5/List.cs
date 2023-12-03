@@ -1,10 +1,10 @@
-﻿using ClassLibraryForHomeTask5.Interfaces;
+﻿
 
 namespace ClassLibraryForHomeTask5
 {
-    public class List : IList
+    public class List<T> : Interfaces.IList<T> where T : IComparable<T>
     {
-        private object[] items;
+        private T[] items;
         private const int DefaultCapacity = 4;
 
         public int Count { get; private set; }
@@ -13,19 +13,18 @@ namespace ClassLibraryForHomeTask5
         public List()
         {
             Capacity = DefaultCapacity;
-            items = new object[Capacity];
+            items = new T[Capacity];
             Count = 0;
         }
 
         public List(int capacity)
         {
             Capacity = capacity > 0 ? capacity : DefaultCapacity;
-            items = new object[Capacity];
+            items = new T[Capacity];
             Count = 0;
         }
 
-
-        public object this[int index]
+        public T this[int index]
         {
             get
             {
@@ -43,7 +42,7 @@ namespace ClassLibraryForHomeTask5
             }
         }
 
-        public void Add(object item)
+        public void Add(T item)
         {
             if (Count == Capacity)
             {
@@ -54,7 +53,7 @@ namespace ClassLibraryForHomeTask5
             Count++;
         }
 
-        public void Insert(int index, object item)
+        public void Insert(int index, T item)
         {
             if (index < 0 || index > Count)
                 throw new IndexOutOfRangeException("Index is out of range.");
@@ -73,7 +72,7 @@ namespace ClassLibraryForHomeTask5
             Count++;
         }
 
-        public void Remove(object item)
+        public void Remove(T item)
         {
             int index = IndexOf(item);
 
@@ -106,29 +105,29 @@ namespace ClassLibraryForHomeTask5
             Count = 0;
         }
 
-        public bool Contains(object item)
+        public bool Contains(T item)
         {
             for (int i = 0; i < Count; i++)
             {
-                if (object.Equals(item, items[i]))
+                if (EqualityComparer<T>.Default.Equals(item, items[i]))
                     return true;
             }
             return false;
         }
 
-        public int IndexOf(object item)
+        public int IndexOf(T item)
         {
             for (int i = 0; i < Count; i++)
             {
-                if (object.Equals(item, items[i]))
+                if (EqualityComparer<T>.Default.Equals(item, items[i]))
                     return i;
             }
             return -1;
         }
 
-        public object[] ToArray()
+        public T[] ToArray()
         {
-            object[] listToArray = new object[Count];
+            T[] listToArray = new T[Count];
             for (int i = 0; i < Count; i++)
             {
                 listToArray[i] = items[i];
@@ -140,7 +139,7 @@ namespace ClassLibraryForHomeTask5
         {
             for (int i = 0, j = Count - 1; i < j; i++, j--)
             {
-                object temp = items[i];
+                T temp = items[i];
                 items[i] = items[j];
                 items[j] = temp;
             }
@@ -149,7 +148,7 @@ namespace ClassLibraryForHomeTask5
         private void EnsureCapacity()
         {
             Capacity *= 2;
-            object[] newItems = new object[Capacity];
+            T[] newItems = new T[Capacity];
             for (int i = 0; i < Count; i++)
             {
                 newItems[i] = items[i];
