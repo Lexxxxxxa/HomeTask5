@@ -2,7 +2,7 @@
 
 namespace ClassLibraryForHomeTask5.Interfaces
 {
-    public interface IList<T> : ICollection<T> where T : IComparable<T>
+    public interface IList<T> : ICollection<T>
     {
         void Insert(int index, T item);
         void Remove(T item);

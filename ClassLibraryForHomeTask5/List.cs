@@ -2,7 +2,7 @@
 
 namespace ClassLibraryForHomeTask5
 {
-    public class List<T> : Interfaces.IList<T> where T : IComparable<T>
+    public class List<T> : Interfaces.IList<T>
     {
         private T[] items;
         private const int DefaultCapacity = 4;

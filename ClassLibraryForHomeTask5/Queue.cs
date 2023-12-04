@@ -2,7 +2,7 @@
 
 namespace ClassLibraryForHomeTask5
 {
-    public class Queue<T> : IQueue<T> where T : IComparable<T>
+    public class Queue<T> : IQueue<T>
     {
         private List<T> list;
 

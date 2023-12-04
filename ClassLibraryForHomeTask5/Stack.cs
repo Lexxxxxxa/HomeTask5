@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace ClassLibraryForHomeTask5
 {
-    public class Stack<T> : IStack<T> where T : IComparable<T>
+    public class Stack<T> : IStack<T>
     {
         private List<T> list;
 

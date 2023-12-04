@@ -2,7 +2,7 @@
 
 namespace ClassLibraryForHomeTask5
 {
-    public class SinglyLinkedList<T> : ISingleLinkedList<T> where T : IComparable<T>
+    public class SinglyLinkedList<T> : ISingleLinkedList<T>
     {
         private class Node
         {

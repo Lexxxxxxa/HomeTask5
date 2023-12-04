@@ -2,7 +2,7 @@
 
 namespace ClassLibraryForHomeTask5
 {
-    public class DoublyLinkedList<T> : IDoubleLinkedList<T> where T : IComparable<T>
+    public class DoublyLinkedList<T> : IDoubleLinkedList<T>
     {
         private class Node
         {
