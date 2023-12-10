@@ -42,7 +42,7 @@ namespace ClassLibraryForHomeTask5
             }
         }
 
-        public void Add(T item)
+        public virtual void Add(T item)
         {
             if (Count == Capacity)
             {
@@ -53,7 +53,7 @@ namespace ClassLibraryForHomeTask5
             Count++;
         }
 
-        public void Insert(int index, T item)
+        public virtual void Insert(int index, T item)
         {
             if (index < 0 || index > Count)
                 throw new IndexOutOfRangeException("Index is out of range.");
@@ -72,7 +72,7 @@ namespace ClassLibraryForHomeTask5
             Count++;
         }
 
-        public void Remove(T item)
+        public virtual void Remove(T item)
         {
             int index = IndexOf(item);
 
@@ -87,7 +87,7 @@ namespace ClassLibraryForHomeTask5
             }
         }
 
-        public void RemoveAt(int index)
+        public virtual void RemoveAt(int index)
         {
             if (index < 0 || index >= Count)
                 throw new IndexOutOfRangeException("Index is out of range.");
@@ -100,7 +100,7 @@ namespace ClassLibraryForHomeTask5
             Count--;
         }
 
-        public void Clear()
+        public virtual void Clear()
         {
             Count = 0;
         }
