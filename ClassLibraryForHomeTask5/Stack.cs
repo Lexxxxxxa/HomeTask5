@@ -1,19 +1,21 @@
 ﻿using ClassLibraryForHomeTask5.Interfaces;
+using System;
+using System.Collections.Generic;
 
 namespace ClassLibraryForHomeTask5
 {
-    public class Stack : IStack
+    public class Stack<T> : IStack<T>
     {
-        private List list;
+        private List<T> list;
 
         public Stack()
         {
-            list = new List();
+            list = new List<T>();
         }
 
         public Stack(int capacity)
         {
-            list = new List(capacity);
+            list = new List<T>(capacity);
         }
 
         public void Clear()
@@ -21,12 +23,12 @@ namespace ClassLibraryForHomeTask5
             list.Clear();
         }
 
-        public bool Contains(object item)
+        public bool Contains(T item)
         {
             return list.Contains(item);
         }
 
-        public object Peek()
+        public T Peek()
         {
             if (list.Count == 0)
                 throw new InvalidOperationException("Stack is empty");
@@ -34,22 +36,22 @@ namespace ClassLibraryForHomeTask5
             return list[list.Count - 1];
         }
 
-        public object[] ToArray()
+        public T[] ToArray()
         {
             return list.ToArray();
         }
 
-        public void Push(object item)
+        public void Push(T item)
         {
             list.Add(item);
         }
 
-        public object Pop()
+        public T Pop()
         {
             if (list.Count == 0)
                 throw new InvalidOperationException("Stack is empty");
 
-            object item = list[list.Count - 1];
+            T item = list[list.Count - 1];
             list.RemoveAt(list.Count - 1);
             return item;
         }

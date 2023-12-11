@@ -1,10 +1,8 @@
 ﻿namespace ClassLibraryForHomeTask5.Interfaces
 {
-    public interface ITree : ICollection
+    public interface ITree<T> : ICollection<T> where T : IComparable<T>
     {
-        void Add(int value);
-        bool Contains(int value);
-        void Clear();
-        int[] ToArray();
+        void Add(T value);
+        bool Contains(T value);
     }
 }

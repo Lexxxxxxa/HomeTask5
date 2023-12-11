@@ -2,15 +2,15 @@
 
 namespace ClassLibraryForHomeTask5
 {
-    public class DoublyLinkedList : IDoubleLinkedList
+    public class DoublyLinkedList<T> : IDoubleLinkedList<T>
     {
         private class Node
         {
-            public readonly object Value;
+            public readonly T Value;
             public Node Next;
             public Node Previous;
 
-            public Node(object value)
+            public Node(T value)
             {
                 Value = value;
                 Next = null;
@@ -29,7 +29,7 @@ namespace ClassLibraryForHomeTask5
             Count = 0;
         }
 
-        public void Add(object item)
+        public void Add(T item)
         {
             Node newNode = new Node(item);
 
@@ -48,7 +48,7 @@ namespace ClassLibraryForHomeTask5
             Count++;
         }
 
-        public void AddFirst(object item)
+        public void AddFirst(T item)
         {
             Node newNode = new Node(item);
 
@@ -67,13 +67,13 @@ namespace ClassLibraryForHomeTask5
             Count++;
         }
 
-        public void Remove(object item)
+        public void Remove(T item)
         {
             Node current = First;
 
             while (current != null)
             {
-                if (object.Equals(current.Value, item))
+                if (EqualityComparer<T>.Default.Equals(current.Value, item))
                 {
                     if (current.Previous != null)
                         current.Previous.Next = current.Next;
@@ -130,13 +130,13 @@ namespace ClassLibraryForHomeTask5
             Count = 0;
         }
 
-        public bool Contains(object item)
+        public bool Contains(T item)
         {
             Node current = First;
 
             while (current != null)
             {
-                if (object.Equals(current.Value, item))
+                if (EqualityComparer<T>.Default.Equals(current.Value, item))
                     return true;
 
                 current = current.Next;
@@ -145,9 +145,9 @@ namespace ClassLibraryForHomeTask5
             return false;
         }
 
-        public object[] ToArray()
+        public T[] ToArray()
         {
-            object[] array = new object[Count];
+            T[] array = new T[Count];
             Node current = First;
 
             for (int i = 0; i < Count; i++)

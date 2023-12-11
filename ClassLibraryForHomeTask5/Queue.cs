@@ -2,31 +2,31 @@
 
 namespace ClassLibraryForHomeTask5
 {
-    public class Queue : IQueue
+    public class Queue<T> : IQueue<T>
     {
-        private List list;
+        private List<T> list;
 
         public Queue()
         {
-            list = new List();
+            list = new List<T>();
         }
 
         public Queue(int capacity)
         {
-            list = new List(capacity);
+            list = new List<T>(capacity);
         }
 
-        public void Enqueue(object item)
+        public void Enqueue(T item)
         {
             list.Add(item);
         }
 
-        public object Dequeue()
+        public T Dequeue()
         {
             if (list.Count == 0)
                 throw new InvalidOperationException("Queue is empty");
 
-            object item = list[0];
+            T item = list[0];
             list.RemoveAt(0);
             return item;
         }
@@ -36,12 +36,12 @@ namespace ClassLibraryForHomeTask5
             list.Clear();
         }
 
-        public bool Contains(object item)
+        public bool Contains(T item)
         {
             return list.Contains(item);
         }
 
-        public object Peek()
+        public T Peek()
         {
             if (list.Count == 0)
                 throw new InvalidOperationException("Queue is empty");
@@ -49,7 +49,7 @@ namespace ClassLibraryForHomeTask5
             return list[0];
         }
 
-        public object[] ToArray()
+        public T[] ToArray()
         {
             return list.ToArray();
         }
