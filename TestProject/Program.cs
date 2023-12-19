@@ -1,4 +1,5 @@
-﻿using static TestProject.TestList;
+﻿using System.Collections;
+using static TestProject.TestList;
 
 namespace TestProject
 {
@@ -6,15 +7,6 @@ namespace TestProject
     {
         static void Main(string[] args)
         {
-            TestListAdd();
-            TestListInsert();
-            TestListRemove();
-            TestListRemoveAt();
-            TestListClear();
-            TestListContains();
-            TestListIndexOf();
-            TestListToArray();
-            TestListReverse();
         }
     }
 }

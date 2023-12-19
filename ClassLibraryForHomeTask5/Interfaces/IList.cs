@@ -9,5 +9,6 @@ namespace ClassLibraryForHomeTask5.Interfaces
         void RemoveAt(int index);
         int IndexOf(T item);
         void Reverse();
+        T[] ToArray();
     }
 }
