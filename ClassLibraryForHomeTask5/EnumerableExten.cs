@@ -67,7 +67,7 @@ namespace ClassLibraryForHomeTask5
                 }
                 else
                 {
-                    break;
+                   yield break;
                 }
             }
         }
