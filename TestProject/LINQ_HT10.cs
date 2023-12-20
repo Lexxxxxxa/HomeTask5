@@ -27,13 +27,13 @@ namespace TestProject
             Console.WriteLine("aaa;xabbx;abb;ccc;dap".Split(';').Any(word => word == "abb"));
 
             // 7
-            Console.WriteLine("aaa;xabbx;abb;ccc;dap".Split(';').OrderByDescending(word => word.Length).First());
+            Console.WriteLine("aaa;xabbx;abb;ccc;dap".Split(';').Aggregate("", (max, cur) => cur.Length > max.Length ? cur : max));
 
             // 8
             Console.WriteLine("aaa;xabbx;abb;ccc;dap".Split(';').Select(word => word.Length).Average());
 
             // 9
-            Console.WriteLine(new string("aaa;xabbx;abb;ccc;dap;zh".Split(';').OrderBy(word => word.Length).First().Reverse().ToArray()));
+            Console.WriteLine(new string("aaa;xabbx;abb;ccc;dap;zh".Split(';').Aggregate((min, cur) => cur.Length < min.Length ? cur : min).Reverse().ToArray()));
 
             // 10
             Console.WriteLine("baaa;aabb;aaa;xabbx;abb;ccc;dap;zh".Split(';').FirstOrDefault(word => word.StartsWith("aa"))?.Skip(2).All(c => c == 'b') ?? false);
