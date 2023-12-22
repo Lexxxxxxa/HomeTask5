@@ -1,21 +1,21 @@
 ﻿using ClassLibraryForHomeTask5;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace TestProject
 {
     public class TestList
     {
 
-        public static void TestListAdd()
+        public static void TestListAdd(IList list)
         {
-            List list = new List();
             list.Add(1);
 
             Console.WriteLine(list[0]);
         }
 
-        public static void TestListInsert()
+        public static void TestListInsert(IList list)
         {
-            List list = new List();
             list.Add(1);
             list.Add(3);
             list.Insert(1, 2);
@@ -23,9 +23,8 @@ namespace TestProject
             Console.WriteLine(list[1]);
         }
 
-        public static void TestListRemove()
+        public static void TestListRemove(IList list)
         {
-            List list = new List();
             list.Add(1);
             list.Add(3);
             list.Add(2);
@@ -34,9 +33,8 @@ namespace TestProject
             Console.WriteLine($"{list[0]} {list[1]}");
         }
 
-        public static void TestListRemoveAt()
+        public static void TestListRemoveAt(IList list)
         {
-            List list = new List();
             list.Add(1);
             list.Add(3);
             list.Add(2);
@@ -45,9 +43,8 @@ namespace TestProject
             Console.WriteLine($"{list[0]} {list[1]}");
         }
 
-        public static void TestListClear()
+        public static void TestListClear(IList list)
         {
-            List list = new List();
             list.Add(1);
             list.Add(3);
             list.Add(2);
@@ -56,42 +53,20 @@ namespace TestProject
             Console.WriteLine(list.Count);
         }
 
-        public static void TestListContains()
+        public static void TestListContains(IList list)
         {
-            List list = new List();
             list.Add(1);
 
             Console.WriteLine($"{list.Contains(2)}, {list.Contains(1)}");
         }
 
-        public static void TestListIndexOf()
+        public static void TestListIndexOf(IList list)
         {
-            List list = new List();
             list.Add(1);
             list.Add(3);
             list.Add(2);
 
             Console.WriteLine(list.IndexOf(2));
-        }
-
-        public static void TestListToArray()
-        {
-            List list = new List();
-            list.Add(1);
-            list.Add(3);
-            list.Add(2);
-
-            Console.WriteLine(list.ToArray());
-        }
-
-        public static void TestListReverse()
-        {
-            List list = new List();
-            list.Add(1);
-            list.Add(3);
-
-            list.Reverse();
-            Console.WriteLine($"{list[0]} {list[1]}");
         }
     }
 }
